@@ -26,3 +26,16 @@ def test_negative_number():
 def test_multiple_negative_numbers():
     with pytest.raises(ValueError, match="negative numbers not allowed: -3,-5"):
         Calc.add("1,-3,2,-5")
+
+def test_ignore_numbers_greater_than_1000():
+    """Numbers greater than 1000 should be ignored"""
+    assert Calc.add("2,1001") == 2
+    assert Calc.add("1000,1") == 1001  
+
+def test_multiple_character_delimiter():
+    """Supports multi-character delimiter like //[***]\\n1***2***3"""
+    assert Calc.add("//[***]\n1***2***3") == 6
+
+def test_multiple_delimiters():
+    """Supports multiple delimiters like //[*][%]\\n1*2%3"""
+    assert Calc.add("//[*][%]\n1*2%3") == 6
