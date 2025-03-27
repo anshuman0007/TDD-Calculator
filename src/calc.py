@@ -6,7 +6,7 @@ class Calc:
         if not numbers:
             return 0
         
-        delimiter = ",|\n"
+        delimiter = ",|\n|\|"
         
         if numbers.startswith("//"):
             match = re.match(r"//(.+)\n(.*)", numbers)
