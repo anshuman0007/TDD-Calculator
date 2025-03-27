@@ -39,3 +39,6 @@ def test_multiple_character_delimiter():
 def test_multiple_delimiters():
     """Supports multiple delimiters like //[*][%]\\n1*2%3"""
     assert Calc.add("//[*][%]\n1*2%3") == 6
+
+def test_pipe_delimiters():
+    assert Calc.add("3,|,4")==7
